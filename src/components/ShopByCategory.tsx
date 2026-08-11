@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { categories } from "@/lib/products";
+import { categories } from "@/lib/product-types";
 
 export function ShopByCategory() {
   return (

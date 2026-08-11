@@ -8,15 +8,24 @@ export default function AuthenticityPage() {
       </h1>
       <div className="mt-8 space-y-4 text-sm leading-relaxed text-neutral-700">
         <p>
-          Every item is verified by our authentication team before it ships.
+          Every item is screened by our team before it ships. We review
+          construction, materials, labeling, and known telltale details based on
+          the information available to us at the time.
         </p>
         <p>
-          We check construction, materials, labeling, and known telltale
-          details.
+          Secondary-market authentication is a good-faith process, not an
+          absolute guarantee. Counterfeits evolve, and even careful review can
+          miss a sophisticated replica.
         </p>
         <p>
-          If an item ever fails verification after purchase, we&apos;ll make it
-          right.
+          If you believe an item is not genuine, contact us promptly with your
+          order number and photos. Where a claim is validated under our{" "}
+          <a href="/terms" className="underline hover:text-black">
+            Terms of Service
+          </a>
+          , we will refund or replace as described there — that is your
+          exclusive remedy for authenticity issues to the fullest extent the law
+          allows.
         </p>
       </div>
     </div>

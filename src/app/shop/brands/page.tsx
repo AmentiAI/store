@@ -1,12 +1,16 @@
-import { brands, products } from "@/lib/products";
+import { getBrands, getProducts } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import Link from "next/link";
+
+export const revalidate = 60;
 
 export const metadata = {
   title: "Brands",
 };
 
-export default function BrandsPage() {
+export default async function BrandsPage() {
+  const [brands, products] = await Promise.all([getBrands(), getProducts()]);
+
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 lg:px-10 lg:py-14">
       <Link

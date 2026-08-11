@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Heart } from "lucide-react";
 import { useState } from "react";
-import { formatPrice, type Product } from "@/lib/products";
+import { Heart } from "lucide-react";
+import { formatPrice, type Product } from "@/lib/product-types";
 
 export function ProductCard({ product }: { product: Product }) {
   const [liked, setLiked] = useState(false);
+  const localImage = product.image.startsWith("/uploads/");
 
   return (
     <article className="group">
@@ -33,6 +34,7 @@ export function ProductCard({ product }: { product: Product }) {
             src={product.image}
             alt={`${product.brand} ${product.name}`}
             fill
+            unoptimized={localImage}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
           />

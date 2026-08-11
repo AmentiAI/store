@@ -8,6 +8,8 @@ import Link from "next/link";
 
 const validCategories: Category[] = ["clothing", "shoes", "accessories"];
 
+export const revalidate = 60;
+
 const titles: Record<Category, string> = {
   clothing: "Clothing",
   shoes: "Shoes",
@@ -16,7 +18,7 @@ const titles: Record<Category, string> = {
 
 type Params = Promise<{ category: string }>;
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return validCategories.map((category) => ({ category }));
 }
 
@@ -35,7 +37,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
   }
 
   const cat = category as Category;
-  const items = getProductsByCategory(cat);
+  const items = await getProductsByCategory(cat);
 
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 lg:px-10 lg:py-14">

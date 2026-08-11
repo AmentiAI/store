@@ -2,8 +2,8 @@ import Link from "next/link";
 import { getNewArrivals } from "@/lib/products";
 import { ProductCard } from "./ProductCard";
 
-export function NewArrivals() {
-  const items = getNewArrivals();
+export async function NewArrivals() {
+  const items = await getNewArrivals();
 
   return (
     <section className="mx-auto max-w-[1400px] px-4 pb-20 sm:px-6 lg:px-10">

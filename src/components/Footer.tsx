@@ -73,6 +73,16 @@ export function Footer() {
                 Contact
               </Link>
             </li>
+            <li>
+              <Link href="/terms" className="hover:text-black">
+                Terms of Service
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy" className="hover:text-black">
+                Privacy Policy
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -107,11 +117,19 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-neutral-200">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-2 px-4 py-5 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-10">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-3 px-4 py-5 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-10">
           <p>© {new Date().getFullYear()} REUP Resale. All rights reserved.</p>
-          <p className="tracking-[0.12em] uppercase">
-            Authentic. Curated. Timeless.
-          </p>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/terms" className="hover:text-black">
+              Terms of Service
+            </Link>
+            <Link href="/privacy" className="hover:text-black">
+              Privacy Policy
+            </Link>
+            <Link href="/authenticity" className="hover:text-black">
+              Authenticity
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,5 +1,10 @@
 import { ProductCard } from "@/components/ProductCard";
-import { brands, products } from "@/lib/products";
+import {
+  getBrands,
+  getNewArrivals,
+  getProducts,
+  getSaleProducts,
+} from "@/lib/products";
 import Link from "next/link";
 
 type SearchParams = Promise<{ filter?: string }>;
@@ -16,16 +21,18 @@ export default async function ShopPage({
   const params = await searchParams;
   const filter = params.filter;
 
-  let items = products;
+  let items = await getProducts();
   let title = "Shop All";
 
   if (filter === "new") {
-    items = products.filter((p) => p.isNew);
+    items = await getNewArrivals(100);
     title = "New Arrivals";
   } else if (filter === "sale") {
-    items = products.slice(0, 4);
+    items = await getSaleProducts();
     title = "Sale";
   }
+
+  const brands = await getBrands();
 
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 lg:px-10 lg:py-14">

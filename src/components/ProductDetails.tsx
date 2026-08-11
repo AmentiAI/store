@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
-import { formatPrice, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/product-types";
 
 export function ProductDetails({ product }: { product: Product }) {
   const { addItem } = useCart();
@@ -22,6 +22,7 @@ export function ProductDetails({ product }: { product: Product }) {
           alt={`${product.brand} ${product.name}`}
           fill
           priority
+          unoptimized={product.image.startsWith("/uploads/")}
           className="object-cover"
           sizes="(max-width: 1024px) 100vw, 50vw"
         />

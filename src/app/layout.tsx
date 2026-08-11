@@ -4,6 +4,7 @@ import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Providers } from "@/components/Providers";
+import { StoreChrome } from "@/components/StoreChrome";
 import "./globals.css";
 
 const display = Bebas_Neue({
@@ -35,10 +36,14 @@ export default function RootLayout({
     <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased">
         <Providers>
-          <AnnouncementBar />
-          <Header />
+          <StoreChrome>
+            <AnnouncementBar />
+            <Header />
+          </StoreChrome>
           <main className="flex-1">{children}</main>
-          <Footer />
+          <StoreChrome>
+            <Footer />
+          </StoreChrome>
         </Providers>
       </body>
     </html>

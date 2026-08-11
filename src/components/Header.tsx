@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
-import { products } from "@/lib/products";
+import type { Product } from "@/lib/product-types";
 
 const navLinks = [
   { href: "/shop?filter=new", label: "New Arrivals" },
@@ -20,17 +20,36 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [results, setResults] = useState<Product[]>([]);
 
-  const results =
-    query.trim().length > 1
-      ? products
-          .filter(
-            (p) =>
-              p.name.toLowerCase().includes(query.toLowerCase()) ||
-              p.brand.toLowerCase().includes(query.toLowerCase()),
-          )
-          .slice(0, 6)
-      : [];
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2) {
+      setResults([]);
+      return;
+    }
+
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      try {
+        const response = await fetch(`/api/search?q=${encodeURIComponent(q)}`, {
+          signal: controller.signal,
+        });
+        if (!response.ok) return;
+        const data = (await response.json()) as Product[];
+        setResults(data);
+      } catch (error) {
+        if ((error as Error).name !== "AbortError") {
+          setResults([]);
+        }
+      }
+    }, 200);
+
+    return () => {
+      controller.abort();
+      clearTimeout(timer);
+    };
+  }, [query]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white">
@@ -148,6 +167,7 @@ export function Header() {
             onClick={() => {
               setSearchOpen(false);
               setQuery("");
+              setResults([]);
             }}
           />
           <div className="relative mx-auto mt-16 w-full max-w-xl px-4 animate-fade-up">
@@ -167,6 +187,7 @@ export function Header() {
                   onClick={() => {
                     setSearchOpen(false);
                     setQuery("");
+                    setResults([]);
                   }}
                 >
                   <X className="h-5 w-5" />
@@ -181,6 +202,7 @@ export function Header() {
                         onClick={() => {
                           setSearchOpen(false);
                           setQuery("");
+                          setResults([]);
                         }}
                         className="flex items-center justify-between px-4 py-3 text-sm transition-colors hover:bg-neutral-50"
                       >
