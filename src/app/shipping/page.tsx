@@ -10,7 +10,7 @@ function InfoLayout({
       <h1 className="font-[family-name:var(--font-display)] text-4xl tracking-tight sm:text-5xl">
         {title}
       </h1>
-      <div className="mt-8 space-y-4 text-sm leading-relaxed text-neutral-700">
+      <div className="mt-8 space-y-4 text-sm leading-relaxed text-muted">
         {children}
       </div>
     </div>

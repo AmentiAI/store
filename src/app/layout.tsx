@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Outfit } from "next/font/google";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
@@ -20,11 +20,40 @@ const body = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "REUP Resale | Premium Pre-Owned Streetwear",
-    template: "%s | REUP Resale",
+    default: "Thrift Sharks | Buy • Sell • Resell",
+    template: "%s | Thrift Sharks",
   },
   description:
-    "Carefully curated authentic pieces from the most sought-after brands. Clothing, shoes, and accessories.",
+    "Buy, sell, and resell authentic streetwear. Clothing, shoes, accessories, and more.",
+  applicationName: "Thrift Sharks",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: [{ url: "/favicon.ico" }],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Thrift Sharks",
+  },
+  other: {
+    "apple-mobile-web-app-capable": "yes",
+    "msapplication-TileColor": "#05070c",
+    "msapplication-TileImage": "/mstile-150x150.png",
+    "msapplication-config": "/browserconfig.xml",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#05070c",
 };
 
 export default function RootLayout({

@@ -21,7 +21,7 @@ export async function AdminNav() {
             href="/admin"
             className="font-[family-name:var(--font-display)] text-2xl tracking-wide"
           >
-            REUP Admin
+            Thrift Sharks Admin
           </Link>
           {session && (
             <p className="mt-0.5 text-xs text-neutral-400">

@@ -1,47 +1,43 @@
 import Link from "next/link";
+import { BrandLogo } from "./BrandLogo";
 import { NewsletterForm } from "./NewsletterForm";
 
 export function Footer() {
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-50">
+    <footer className="border-t border-line bg-surface">
       <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-14 sm:px-6 md:grid-cols-4 lg:px-10">
         <div className="md:col-span-1">
-          <Link href="/" className="inline-block leading-none">
-            <span className="block font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight">
-              REUP
-            </span>
-            <span className="mt-[-2px] block text-[10px] font-semibold tracking-[0.42em]">
-              RESALE
-            </span>
+          <Link href="/" className="inline-block" aria-label="Thrift Sharks home">
+            <BrandLogo size="footer" />
           </Link>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-600">
-            Premium pre-owned streetwear. Authenticated, curated, and ready for
-            the next chapter.
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+            Buy. Sell. Resell. Authenticated streetwear, sneakers, and
+            accessories — ready for the next chapter.
           </p>
         </div>
 
         <div>
-          <h3 className="mb-4 text-[11px] font-semibold tracking-[0.16em] uppercase">
+          <h3 className="mb-4 text-[11px] font-semibold tracking-[0.16em] uppercase text-accent">
             Shop
           </h3>
-          <ul className="space-y-2.5 text-sm text-neutral-600">
+          <ul className="space-y-2.5 text-sm text-muted">
             <li>
-              <Link href="/shop?filter=new" className="hover:text-black">
+              <Link href="/shop?filter=new" className="hover:text-accent">
                 New Arrivals
               </Link>
             </li>
             <li>
-              <Link href="/shop/clothing" className="hover:text-black">
+              <Link href="/shop/clothing" className="hover:text-accent">
                 Clothing
               </Link>
             </li>
             <li>
-              <Link href="/shop/shoes" className="hover:text-black">
+              <Link href="/shop/shoes" className="hover:text-accent">
                 Shoes
               </Link>
             </li>
             <li>
-              <Link href="/shop/accessories" className="hover:text-black">
+              <Link href="/shop/accessories" className="hover:text-accent">
                 Accessories
               </Link>
             </li>
@@ -49,37 +45,37 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-4 text-[11px] font-semibold tracking-[0.16em] uppercase">
+          <h3 className="mb-4 text-[11px] font-semibold tracking-[0.16em] uppercase text-accent">
             Help
           </h3>
-          <ul className="space-y-2.5 text-sm text-neutral-600">
+          <ul className="space-y-2.5 text-sm text-muted">
             <li>
-              <Link href="/shipping" className="hover:text-black">
+              <Link href="/shipping" className="hover:text-accent">
                 Shipping
               </Link>
             </li>
             <li>
-              <Link href="/returns" className="hover:text-black">
+              <Link href="/returns" className="hover:text-accent">
                 Returns
               </Link>
             </li>
             <li>
-              <Link href="/authenticity" className="hover:text-black">
+              <Link href="/authenticity" className="hover:text-accent">
                 Authenticity
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-black">
+              <Link href="/contact" className="hover:text-accent">
                 Contact
               </Link>
             </li>
             <li>
-              <Link href="/terms" className="hover:text-black">
+              <Link href="/terms" className="hover:text-accent">
                 Terms of Service
               </Link>
             </li>
             <li>
-              <Link href="/privacy" className="hover:text-black">
+              <Link href="/privacy" className="hover:text-accent">
                 Privacy Policy
               </Link>
             </li>
@@ -87,10 +83,10 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-4 text-[11px] font-semibold tracking-[0.16em] uppercase">
+          <h3 className="mb-4 text-[11px] font-semibold tracking-[0.16em] uppercase text-accent">
             Stay Updated
           </h3>
-          <p className="mb-3 text-sm text-neutral-600">
+          <p className="mb-3 text-sm text-muted">
             Drop alerts and exclusive drops — no spam.
           </p>
           <NewsletterForm />
@@ -98,7 +94,7 @@ export function Footer() {
             href="https://instagram.com"
             target="_blank"
             rel="noreferrer"
-            className="mt-5 inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-black"
+            className="mt-5 inline-flex items-center gap-2 text-sm text-muted hover:text-accent"
           >
             <svg
               viewBox="0 0 24 24"
@@ -112,21 +108,21 @@ export function Footer() {
               <circle cx="12" cy="12" r="4" />
               <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
             </svg>
-            @reupresale
+            @thriftsharks
           </a>
         </div>
       </div>
-      <div className="border-t border-neutral-200">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-3 px-4 py-5 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-10">
-          <p>© {new Date().getFullYear()} REUP Resale. All rights reserved.</p>
+      <div className="border-t border-line">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-3 px-4 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-10">
+          <p>© {new Date().getFullYear()} Thrift Sharks. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
-            <Link href="/terms" className="hover:text-black">
+            <Link href="/terms" className="hover:text-accent">
               Terms of Service
             </Link>
-            <Link href="/privacy" className="hover:text-black">
+            <Link href="/privacy" className="hover:text-accent">
               Privacy Policy
             </Link>
-            <Link href="/authenticity" className="hover:text-black">
+            <Link href="/authenticity" className="hover:text-accent">
               Authenticity
             </Link>
           </div>

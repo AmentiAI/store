@@ -3,7 +3,7 @@ import { LegalLayout, LegalSection } from "@/components/LegalLayout";
 export const metadata = {
   title: "Privacy Policy",
   description:
-    "Privacy Policy for REUP Resale explaining how we collect, use, and protect personal information.",
+    "Privacy Policy for Thrift Sharks explaining how we collect, use, and protect personal information.",
 };
 
 const UPDATED = "August 11, 2026";
@@ -12,13 +12,13 @@ export default function PrivacyPage() {
   return (
     <LegalLayout title="Privacy Policy" updated={UPDATED}>
       <p>
-        This Privacy Policy explains how REUP Resale (“REUP,” “we,” “us,” or
+        This Privacy Policy explains how Thrift Sharks (“Thrift Sharks,” “we,” “us,” or
         “our”) collects, uses, shares, and protects personal information when
         you use our website and related services (the “Services”). By using the
         Services, you acknowledge this Policy. If you do not agree, do not use
         the Services.
       </p>
-      <p className="rounded-sm border border-neutral-200 bg-neutral-50 p-4 text-neutral-600">
+      <p className="rounded-sm border border-line bg-surface p-4 text-muted">
         This Policy is a protective template and is not legal advice. Have a
         privacy attorney review it for your locations of operation, payment
         stack, and marketing tools (including CCPA/CPRA, GDPR, and other laws
@@ -29,36 +29,36 @@ export default function PrivacyPage() {
         <p>We may collect:</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong className="font-semibold text-black">Account data:</strong>{" "}
+            <strong className="font-semibold text-foreground">Account data:</strong>{" "}
             name, email, password (hashed), and profile details you provide.
           </li>
           <li>
-            <strong className="font-semibold text-black">Order data:</strong>{" "}
+            <strong className="font-semibold text-foreground">Order data:</strong>{" "}
             shipping and billing address, phone number, items purchased,
             amounts, and order history.
           </li>
           <li>
-            <strong className="font-semibold text-black">Payment data:</strong>{" "}
+            <strong className="font-semibold text-foreground">Payment data:</strong>{" "}
             payment method details are typically processed by third-party
             processors; we generally receive limited payment tokens, status, and
             last-four digits rather than full card numbers.
           </li>
           <li>
-            <strong className="font-semibold text-black">
+            <strong className="font-semibold text-foreground">
               Communications:
             </strong>{" "}
             messages, authenticity claims, return requests, and support
             correspondence (including photos you send of items).
           </li>
           <li>
-            <strong className="font-semibold text-black">
+            <strong className="font-semibold text-foreground">
               Device and usage data:
             </strong>{" "}
             IP address, browser type, pages viewed, referring URLs, approximate
             location, and cookies or similar technologies.
           </li>
           <li>
-            <strong className="font-semibold text-black">Marketing data:</strong>{" "}
+            <strong className="font-semibold text-foreground">Marketing data:</strong>{" "}
             newsletter signup preferences and campaign engagement if you opt
             in.
           </li>
@@ -164,7 +164,7 @@ export default function PrivacyPage() {
         </p>
         <p>
           To exercise rights, contact us via the{" "}
-          <a href="/contact" className="underline hover:text-black">
+          <a href="/contact" className="underline hover:text-accent">
             Contact
           </a>{" "}
           page. We may verify your identity before fulfilling a request. You may
@@ -204,7 +204,7 @@ export default function PrivacyPage() {
         <p>
           If you submit an authenticity or returns claim, we may retain photos,
           messages, shipping records, and related evidence to investigate fraud,
-          protect REUP, and resolve disputes, including accidental listings of
+          protect Thrift Sharks, and resolve disputes, including accidental listings of
           non-genuine items. This information may be shared with payment
           networks, carriers, insurers, or advisors as needed.
         </p>
@@ -222,7 +222,7 @@ export default function PrivacyPage() {
       <LegalSection title="14. Contact">
         <p>
           Privacy requests and questions: use our{" "}
-          <a href="/contact" className="underline hover:text-black">
+          <a href="/contact" className="underline hover:text-accent">
             Contact
           </a>{" "}
           page with the subject line “Privacy Request.”

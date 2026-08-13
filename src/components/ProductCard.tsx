@@ -19,9 +19,9 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="group">
-      <div className="relative mb-3 aspect-[4/5] overflow-hidden bg-neutral-100">
+      <div className="relative mb-3 aspect-[4/5] overflow-hidden border border-line bg-surface">
         {product.isNew && (
-          <span className="absolute left-2.5 top-2.5 z-10 bg-black px-2 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase text-white">
+          <span className="absolute left-2.5 top-2.5 z-10 bg-accent px-2 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase text-background">
             New
           </span>
         )}
@@ -29,10 +29,10 @@ export function ProductCard({ product }: { product: Product }) {
           type="button"
           aria-label={liked ? "Remove from wishlist" : "Add to wishlist"}
           onClick={() => setLiked((v) => !v)}
-          className="absolute right-2.5 top-2.5 z-10 rounded-full bg-white/90 p-1.5 transition-colors hover:bg-white"
+          className="absolute right-2.5 top-2.5 z-10 rounded-full bg-background/80 p-1.5 transition-colors hover:bg-accent hover:text-background"
         >
           <Heart
-            className={`h-4 w-4 ${liked ? "fill-black text-black" : "text-neutral-700"}`}
+            className={`h-4 w-4 ${liked ? "fill-accent text-accent" : ""}`}
             strokeWidth={1.5}
           />
         </button>
@@ -65,8 +65,10 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="text-[11px] font-bold tracking-[0.12em] uppercase">
           {product.brand}
         </p>
-        <p className="mt-1 text-sm text-neutral-600">{product.name}</p>
-        <p className="mt-1.5 text-sm font-semibold">{formatPrice(product.price)}</p>
+        <p className="mt-1 text-sm text-muted">{product.name}</p>
+        <p className="mt-1.5 text-sm font-semibold text-accent">
+          {formatPrice(product.price)}
+        </p>
       </Link>
     </article>
   );

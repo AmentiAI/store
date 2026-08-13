@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Admin | REUP",
+  title: "Admin | Thrift Sharks",
 };
 
 export default function AdminRootLayout({

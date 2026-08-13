@@ -15,14 +15,14 @@ export default async function BrandsPage() {
     <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 lg:px-10 lg:py-14">
       <Link
         href="/shop"
-        className="text-[11px] font-semibold tracking-[0.14em] uppercase text-neutral-500 hover:text-black"
+        className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted hover:text-accent"
       >
         ← Shop All
       </Link>
       <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight sm:text-5xl">
         Brands
       </h1>
-      <p className="mt-2 max-w-lg text-sm text-neutral-600">
+      <p className="mt-2 max-w-lg text-sm text-muted">
         Sought-after labels, carefully curated and authenticity verified.
       </p>
 
@@ -30,7 +30,7 @@ export default async function BrandsPage() {
         {brands.map((brand) => (
           <span
             key={brand}
-            className="border border-neutral-300 px-4 py-2.5 text-sm font-medium"
+            className="border border-line px-4 py-2.5 text-sm font-medium"
           >
             {brand}
           </span>

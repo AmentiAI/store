@@ -13,7 +13,7 @@ export async function NewArrivals() {
         </h2>
         <Link
           href="/shop?filter=new"
-          className="text-[11px] font-semibold tracking-[0.16em] uppercase text-neutral-700 transition-colors hover:text-black"
+          className="text-[11px] font-semibold tracking-[0.16em] uppercase text-muted transition-colors hover:text-accent"
         >
           View All
         </Link>

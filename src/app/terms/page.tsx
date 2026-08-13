@@ -3,7 +3,7 @@ import { LegalLayout, LegalSection } from "@/components/LegalLayout";
 export const metadata = {
   title: "Terms of Service",
   description:
-    "Terms of Service for REUP Resale, including authenticity, liability, and purchase terms.",
+    "Terms of Service for Thrift Sharks, including authenticity, liability, and purchase terms.",
 };
 
 const UPDATED = "August 11, 2026";
@@ -13,13 +13,13 @@ export default function TermsPage() {
     <LegalLayout title="Terms of Service" updated={UPDATED}>
       <p>
         These Terms of Service (“Terms”) govern your access to and use of the
-        REUP Resale website, products, and services (collectively, the
-        “Services”) operated by REUP Resale (“REUP,” “we,” “us,” or “our”). By
+        Thrift Sharks website, products, and services (collectively, the
+        “Services”) operated by Thrift Sharks (“Thrift Sharks,” “we,” “us,” or “our”). By
         browsing, creating an account, placing an order, or otherwise using the
         Services, you agree to these Terms. If you do not agree, do not use the
         Services.
       </p>
-      <p className="rounded-sm border border-neutral-200 bg-neutral-50 p-4 text-neutral-600">
+      <p className="rounded-sm border border-line bg-surface p-4 text-muted">
         These Terms are a protective template for an online resale business and
         are not a substitute for advice from a licensed attorney. Have counsel
         review them for your jurisdiction and business model before relying on
@@ -28,7 +28,7 @@ export default function TermsPage() {
 
       <LegalSection title="1. Who we are">
         <p>
-          REUP Resale is an online retailer of pre-owned, vintage, and secondary
+          Thrift Sharks is an online retailer of pre-owned, vintage, and secondary
           market apparel, footwear, and accessories. Items are sourced from
           individuals, consignors, liquidators, and other third parties. Unless
           expressly stated otherwise, items are not purchased new from brand
@@ -51,7 +51,7 @@ export default function TermsPage() {
           credentials and for all activity under your account. Provide accurate
           information and notify us promptly of unauthorized use. We may
           suspend or terminate accounts that violate these Terms or that we
-          reasonably believe pose risk to REUP, other users, or third parties.
+          reasonably believe pose risk to Thrift Sharks, other users, or third parties.
         </p>
       </LegalSection>
 
@@ -83,7 +83,7 @@ export default function TermsPage() {
         <p>
           We take authenticity seriously and may inspect, research, and screen
           items before listing or shipping.{" "}
-          <strong className="font-semibold text-black">
+          <strong className="font-semibold text-foreground">
             However, authentication of secondary-market goods is inherently
             imperfect.
           </strong>{" "}
@@ -96,15 +96,15 @@ export default function TermsPage() {
           <li>
             Any statement that an item is “authentic,” “verified,” “legit
             checked,” or similar is a{" "}
-            <strong className="font-semibold text-black">
+            <strong className="font-semibold text-foreground">
               good-faith opinion based on our process at the time of review
             </strong>
             , not an absolute guarantee, warranty, or certification by the
             brand owner.
           </li>
           <li>
-            REUP is{" "}
-            <strong className="font-semibold text-black">
+            Thrift Sharks is{" "}
+            <strong className="font-semibold text-foreground">
               not affiliated with, endorsed by, or an authorized dealer of
             </strong>{" "}
             Nike, Adidas, Supreme, Louis Vuitton, Gucci, Chrome Hearts, BAPE,
@@ -123,7 +123,7 @@ export default function TermsPage() {
           <li>
             If we accidentally list or sell an item that is not genuine, or that
             we later reasonably believe may not be genuine,{" "}
-            <strong className="font-semibold text-black">
+            <strong className="font-semibold text-foreground">
               your sole and exclusive remedy
             </strong>{" "}
             is set out in Section 6 below, to the maximum extent permitted by
@@ -157,7 +157,7 @@ export default function TermsPage() {
           </li>
         </ul>
         <p>
-          <strong className="font-semibold text-black">
+          <strong className="font-semibold text-foreground">
             To the fullest extent permitted by law, refund or replacement as
             described above is your sole and exclusive remedy
           </strong>{" "}
@@ -173,7 +173,7 @@ export default function TermsPage() {
         <p>
           If applicable law does not allow limitation of certain warranties or
           damages, our liability is limited to the maximum extent the law
-          allows, and in no event more than the amount you paid to REUP for the
+          allows, and in no event more than the amount you paid to Thrift Sharks for the
           specific item giving rise to the claim.
         </p>
       </LegalSection>
@@ -182,7 +182,7 @@ export default function TermsPage() {
         <p>
           Except for any remedy expressly provided in these Terms or required by
           non-waivable law, all products are sold{" "}
-          <strong className="font-semibold text-black">
+          <strong className="font-semibold text-foreground">
             “AS IS” and “AS AVAILABLE,”
           </strong>{" "}
           without warranties of merchantability, fitness for a particular
@@ -215,7 +215,7 @@ export default function TermsPage() {
       <LegalSection title="10. Returns and cancellations">
         <p>
           Returns are governed by our{" "}
-          <a href="/returns" className="underline hover:text-black">
+          <a href="/returns" className="underline hover:text-accent">
             Returns Policy
           </a>
           , which is incorporated into these Terms. Final-sale, heavily worn,
@@ -249,7 +249,7 @@ export default function TermsPage() {
       <LegalSection title="12. Intellectual property">
         <p>
           The Services, including site design, text, graphics, logos, and
-          software, are owned by REUP or its licensors. You receive a limited,
+          software, are owned by Thrift Sharks or its licensors. You receive a limited,
           non-exclusive, revocable license to use the Services for personal
           shopping. Brand trademarks appearing in product listings belong to
           their respective owners and are used for identification only.
@@ -260,14 +260,14 @@ export default function TermsPage() {
         <p>
           Payment processors, shipping carriers, analytics, hosting, and other
           vendors are third parties. Their terms and privacy practices apply to
-          their services. REUP is not responsible for third-party outages,
+          their services. Thrift Sharks is not responsible for third-party outages,
           errors, or security incidents beyond our reasonable control.
         </p>
       </LegalSection>
 
       <LegalSection title="14. Indemnification">
         <p>
-          You will indemnify, defend, and hold harmless REUP and its owners,
+          You will indemnify, defend, and hold harmless Thrift Sharks and its owners,
           officers, employees, contractors, and agents from claims, damages,
           losses, and expenses (including reasonable attorneys’ fees) arising
           out of your misuse of the Services, violation of these Terms, false
@@ -278,12 +278,12 @@ export default function TermsPage() {
 
       <LegalSection title="15. Limitation of liability">
         <p>
-          To the maximum extent permitted by law, REUP will not be liable for
+          To the maximum extent permitted by law, Thrift Sharks will not be liable for
           indirect, incidental, special, consequential, exemplary, or punitive
           damages, or any loss of profits, data, goodwill, or business
           opportunities, even if advised of the possibility. Our total
           aggregate liability for any claim relating to the Services or a
-          product will not exceed the greater of (a) the amount you paid to REUP
+          product will not exceed the greater of (a) the amount you paid to Thrift Sharks
           for the product or service at issue in the twelve (12) months before
           the claim, or (b) one hundred U.S. dollars (US $100).
         </p>
@@ -292,7 +292,7 @@ export default function TermsPage() {
       <LegalSection title="16. Dispute resolution; governing law">
         <p>
           These Terms are governed by the laws of the United States and the
-          State in which REUP Resale maintains its principal place of business,
+          State in which Thrift Sharks maintains its principal place of business,
           without regard to conflict-of-law rules.
         </p>
         <p>
@@ -330,7 +330,7 @@ export default function TermsPage() {
           If any provision is held unenforceable, the remainder stays in
           effect. These Terms, plus policies linked from them (including
           Privacy, Returns, Shipping, and Authenticity pages), are the entire
-          agreement between you and REUP regarding the Services and supersede
+          agreement between you and Thrift Sharks regarding the Services and supersede
           prior understandings on that subject.
         </p>
       </LegalSection>
@@ -338,7 +338,7 @@ export default function TermsPage() {
       <LegalSection title="20. Contact">
         <p>
           For legal or authenticity notices, use the{" "}
-          <a href="/contact" className="underline hover:text-black">
+          <a href="/contact" className="underline hover:text-accent">
             Contact
           </a>{" "}
           page and include your order number and a detailed description of the

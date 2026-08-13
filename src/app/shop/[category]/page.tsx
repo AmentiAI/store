@@ -44,14 +44,14 @@ export default async function CategoryPage({ params }: { params: Params }) {
       <div className="mb-8">
         <Link
           href="/shop"
-          className="text-[11px] font-semibold tracking-[0.14em] uppercase text-neutral-500 hover:text-black"
+          className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted hover:text-accent"
         >
           ← Shop All
         </Link>
         <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight sm:text-5xl">
           {titles[cat]}
         </h1>
-        <p className="mt-2 text-sm text-neutral-600">
+        <p className="mt-2 text-sm text-muted">
           {items.length} piece{items.length === 1 ? "" : "s"}
         </p>
       </div>

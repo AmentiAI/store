@@ -13,7 +13,7 @@ export function ShopByCategory() {
           <Link
             key={category.id}
             href={category.href}
-            className="group relative flex min-h-[200px] overflow-hidden bg-neutral-100 transition-transform hover:-translate-y-0.5"
+            className="group relative flex min-h-[200px] overflow-hidden border border-line bg-surface transition-transform hover:-translate-y-0.5 hover:border-accent/50"
             style={{ animationDelay: `${index * 80}ms` }}
           >
             <div className="relative w-[55%] sm:w-1/2">
@@ -29,7 +29,7 @@ export function ShopByCategory() {
               <h3 className="font-[family-name:var(--font-display)] text-2xl tracking-tight sm:text-[1.75rem]">
                 {category.name}
               </h3>
-              <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold tracking-[0.16em] uppercase text-neutral-700 transition-colors group-hover:text-black">
+              <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold tracking-[0.16em] uppercase text-accent transition-colors group-hover:text-accent-bright">
                 Shop Now
                 <span className="transition-transform group-hover:translate-x-1">
                   →

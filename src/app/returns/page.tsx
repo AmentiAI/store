@@ -6,7 +6,7 @@ export default function ReturnsPage() {
       <h1 className="font-[family-name:var(--font-display)] text-4xl tracking-tight sm:text-5xl">
         Returns
       </h1>
-      <div className="mt-8 space-y-4 text-sm leading-relaxed text-neutral-700">
+      <div className="mt-8 space-y-4 text-sm leading-relaxed text-muted">
         <p>
           14-day hassle-free returns on eligible items in original condition.
         </p>

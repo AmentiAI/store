@@ -5,6 +5,9 @@ import { login, signup, logout, type AuthState } from "@/app/actions/auth";
 
 const initial: AuthState = {};
 
+const inputClass =
+  "w-full border border-line bg-surface px-3 py-3 text-sm outline-none focus:border-accent";
+
 export function AccountAuth({
   user,
 }: {
@@ -22,16 +25,16 @@ export function AccountAuth({
 
   if (user) {
     return (
-      <div className="mt-8 border border-neutral-200 p-6">
-        <p className="text-sm text-neutral-600">Signed in as</p>
+      <div className="mt-8 border border-line bg-surface p-6">
+        <p className="text-sm text-muted">Signed in as</p>
         <p className="mt-1 font-[family-name:var(--font-display)] text-3xl">
           {user.name}
         </p>
-        <p className="text-sm text-neutral-600">{user.email}</p>
+        <p className="text-sm text-muted">{user.email}</p>
         {user.role === "ADMIN" && (
           <a
             href="/admin"
-            className="mt-4 inline-block text-[11px] font-semibold tracking-[0.14em] uppercase underline"
+            className="mt-4 inline-block text-[11px] font-semibold tracking-[0.14em] uppercase text-accent underline"
           >
             Open admin dashboard
           </a>
@@ -39,7 +42,7 @@ export function AccountAuth({
         <form action={logout} className="mt-6">
           <button
             type="submit"
-            className="border border-neutral-300 px-4 py-2.5 text-[11px] font-semibold tracking-[0.14em] uppercase hover:border-black"
+            className="border border-line px-4 py-2.5 text-[11px] font-semibold tracking-[0.14em] uppercase hover:border-accent"
           >
             Sign out
           </button>
@@ -54,14 +57,14 @@ export function AccountAuth({
         <button
           type="button"
           onClick={() => setMode("login")}
-          className={mode === "login" ? "text-black" : "text-neutral-400"}
+          className={mode === "login" ? "text-accent" : "text-muted"}
         >
           Sign in
         </button>
         <button
           type="button"
           onClick={() => setMode("signup")}
-          className={mode === "signup" ? "text-black" : "text-neutral-400"}
+          className={mode === "signup" ? "text-accent" : "text-muted"}
         >
           Create account
         </button>
@@ -75,22 +78,22 @@ export function AccountAuth({
             type="email"
             required
             placeholder="Email"
-            className="w-full border border-neutral-300 px-3 py-3 text-sm outline-none focus:border-black"
+            className={inputClass}
           />
           <input
             name="password"
             type="password"
             required
             placeholder="Password"
-            className="w-full border border-neutral-300 px-3 py-3 text-sm outline-none focus:border-black"
+            className={inputClass}
           />
           {loginState.error && (
-            <p className="text-sm text-red-600">{loginState.error}</p>
+            <p className="text-sm text-red-400">{loginState.error}</p>
           )}
           <button
             type="submit"
             disabled={loginPending}
-            className="w-full bg-black py-3.5 text-[11px] font-semibold tracking-[0.16em] uppercase text-white disabled:opacity-60"
+            className="w-full bg-accent py-3.5 text-[11px] font-semibold tracking-[0.16em] uppercase text-background disabled:opacity-60"
           >
             {loginPending ? "Signing in..." : "Sign In"}
           </button>
@@ -101,29 +104,29 @@ export function AccountAuth({
             name="name"
             required
             placeholder="Name"
-            className="w-full border border-neutral-300 px-3 py-3 text-sm outline-none focus:border-black"
+            className={inputClass}
           />
           <input
             name="email"
             type="email"
             required
             placeholder="Email"
-            className="w-full border border-neutral-300 px-3 py-3 text-sm outline-none focus:border-black"
+            className={inputClass}
           />
           <input
             name="password"
             type="password"
             required
             placeholder="Password (min 8 chars)"
-            className="w-full border border-neutral-300 px-3 py-3 text-sm outline-none focus:border-black"
+            className={inputClass}
           />
           {signupState.error && (
-            <p className="text-sm text-red-600">{signupState.error}</p>
+            <p className="text-sm text-red-400">{signupState.error}</p>
           )}
           <button
             type="submit"
             disabled={signupPending}
-            className="w-full bg-black py-3.5 text-[11px] font-semibold tracking-[0.16em] uppercase text-white disabled:opacity-60"
+            className="w-full bg-accent py-3.5 text-[11px] font-semibold tracking-[0.16em] uppercase text-background disabled:opacity-60"
           >
             {signupPending ? "Creating..." : "Create Account"}
           </button>
