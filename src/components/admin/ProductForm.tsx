@@ -48,7 +48,8 @@ export function ProductForm({ product }: { product?: Product }) {
           Product image
         </h2>
         <p className="mt-1 text-sm text-neutral-600">
-          Upload from your computer (JPG, PNG, WEBP, GIF · max 8MB).
+          Upload from your computer (JPG, PNG, WEBP, GIF · max 8MB). Images are
+          stored on Vercel Blob.
         </p>
 
         <div

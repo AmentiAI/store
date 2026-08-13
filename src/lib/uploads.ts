@@ -1,7 +1,6 @@
 import "server-only";
 
-import { mkdir, writeFile } from "fs/promises";
-import path from "path";
+import { put } from "@vercel/blob";
 import { randomUUID } from "crypto";
 
 const ALLOWED_TYPES = new Set([
@@ -27,7 +26,7 @@ function extensionFor(type: string) {
   }
 }
 
-export async function saveProductImage(file: File): Promise<string> {
+function assertValidImage(file: File) {
   if (!ALLOWED_TYPES.has(file.type)) {
     throw new Error("Use a JPG, PNG, WEBP, or GIF image.");
   }
@@ -37,15 +36,32 @@ export async function saveProductImage(file: File): Promise<string> {
   if (file.size > MAX_BYTES) {
     throw new Error("Image must be 8MB or smaller.");
   }
+}
 
-  const dir = path.join(process.cwd(), "public", "uploads", "products");
-  await mkdir(dir, { recursive: true });
+function getBlobToken() {
+  const token = process.env.BLOB_READ_WRITE_TOKEN?.trim().replace(/^["']|["']$/g, "");
+  if (!token) {
+    throw new Error(
+      "BLOB_READ_WRITE_TOKEN is missing. Add it in .env locally and in Vercel → Settings → Environment Variables.",
+    );
+  }
+  return token;
+}
+
+export async function saveProductImage(file: File): Promise<string> {
+  assertValidImage(file);
+  const token = getBlobToken();
 
   const filename = `${Date.now()}-${randomUUID().slice(0, 8)}.${extensionFor(file.type)}`;
-  const buffer = Buffer.from(await file.arrayBuffer());
-  await writeFile(path.join(dir, filename), buffer);
 
-  return `/uploads/products/${filename}`;
+  const blob = await put(`products/${filename}`, file, {
+    access: "public",
+    contentType: file.type,
+    addRandomSuffix: false,
+    token,
+  });
+
+  return blob.url;
 }
 
 export async function resolveProductImage(
