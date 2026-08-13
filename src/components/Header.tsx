@@ -71,7 +71,8 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-accent bg-white/95 pt-[env(safe-area-inset-top)] backdrop-blur-md">
+    <>
+    <header className="sticky top-0 z-50 border-b-2 border-accent bg-white pt-[env(safe-area-inset-top)]">
       <div className="mx-auto flex max-w-[1400px] items-center gap-1 px-2 py-1.5 sm:gap-3 sm:px-6 sm:py-3 lg:px-10">
         <button
           type="button"
@@ -133,9 +134,10 @@ export function Header() {
           </button>
         </div>
       </div>
+    </header>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-[60] lg:hidden">
+        <div className="fixed inset-0 z-[100] lg:hidden">
           <button
             type="button"
             className="absolute inset-0 bg-black/70"
@@ -178,7 +180,7 @@ export function Header() {
       )}
 
       {searchOpen && (
-        <div className="fixed inset-0 z-[70]">
+        <div className="fixed inset-0 z-[100]">
           <button
             type="button"
             className="absolute inset-0 bg-black/70"
@@ -230,6 +232,6 @@ export function Header() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
