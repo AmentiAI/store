@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/session";
-import { resolveProductImage } from "@/lib/uploads";
+import { resolveProductImages } from "@/lib/uploads";
 import type { Category, OrderStatus } from "@/generated/prisma/client";
 
 export type AdminState = {
@@ -65,14 +65,17 @@ export async function createProduct(
     return { error: "Pick a valid category." };
   }
 
-  let image: string;
+  let images: string[];
   try {
-    image = await resolveProductImage(formData);
+    images = await resolveProductImages(formData);
   } catch (error) {
     return {
       error: error instanceof Error ? error.message : "Image upload failed.",
     };
   }
+
+  const cover = images[0];
+  if (!cover) return { error: "Add at least one product image." };
 
   try {
     await prisma.product.create({
@@ -82,7 +85,8 @@ export async function createProduct(
         name,
         price,
         category,
-        image,
+        image: cover,
+        images,
         description,
         sizes,
         stock: Number.isFinite(stock) ? stock : 1,
@@ -116,7 +120,6 @@ export async function updateProduct(
   const isNew = formData.get("isNew") === "on";
   const onSale = formData.get("onSale") === "on";
   const slug = String(formData.get("slug") ?? "").trim();
-  const existingImage = String(formData.get("existingImage") ?? "").trim();
 
   if (
     !id ||
@@ -130,14 +133,17 @@ export async function updateProduct(
     return { error: "Fill in brand, name, slug, price, and description." };
   }
 
-  let image: string;
+  let images: string[];
   try {
-    image = await resolveProductImage(formData, existingImage);
+    images = await resolveProductImages(formData);
   } catch (error) {
     return {
       error: error instanceof Error ? error.message : "Image upload failed.",
     };
   }
+
+  const cover = images[0];
+  if (!cover) return { error: "Add at least one product image." };
 
   try {
     await prisma.product.update({
@@ -148,7 +154,8 @@ export async function updateProduct(
         name,
         price,
         category,
-        image,
+        image: cover,
+        images,
         description,
         sizes,
         stock: Number.isFinite(stock) ? stock : 1,

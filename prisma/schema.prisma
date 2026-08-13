@@ -47,6 +47,7 @@ model Product {
   price         Float
   category      Category
   image         String
+  images        String[]       @default([])
   isNew         Boolean        @default(false)
   onSale        Boolean        @default(false)
   description   String

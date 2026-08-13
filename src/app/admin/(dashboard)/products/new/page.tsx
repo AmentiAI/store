@@ -16,7 +16,7 @@ export default function NewProductPage() {
         Add product
       </h1>
       <p className="mb-6 max-w-2xl text-sm text-neutral-600">
-        Upload a product photo, then set the price, description, sizes, and
+        Upload product photos, then set the price, description, sizes, and
         stock. It will show up in the shop after you publish.
       </p>
       <ProductForm />

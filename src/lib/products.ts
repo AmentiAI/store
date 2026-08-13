@@ -19,6 +19,7 @@ function toProduct(product: PrismaProduct): Product {
     price: product.price,
     category: product.category,
     image: product.image,
+    images: product.images.length > 0 ? product.images : [product.image],
     isNew: product.isNew,
     onSale: product.onSale,
     description: product.description,

@@ -8,11 +8,28 @@ export type Product = {
   price: number;
   category: Category;
   image: string;
+  images: string[];
   isNew?: boolean;
   onSale?: boolean;
   description: string;
   sizes?: string[];
 };
+
+export const MAX_PRODUCT_IMAGES = 8;
+
+export function productGallery(product: {
+  image: string;
+  images?: string[];
+}): string[] {
+  if (product.images && product.images.length > 0) {
+    return product.images;
+  }
+  return product.image ? [product.image] : [];
+}
+
+export function isLocalUpload(src: string) {
+  return src.startsWith("/uploads/");
+}
 
 export const categories: {
   id: Category;

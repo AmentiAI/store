@@ -4,11 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Heart } from "lucide-react";
-import { formatPrice, type Product } from "@/lib/product-types";
+import {
+  formatPrice,
+  isLocalUpload,
+  productGallery,
+  type Product,
+} from "@/lib/product-types";
 
 export function ProductCard({ product }: { product: Product }) {
   const [liked, setLiked] = useState(false);
-  const localImage = product.image.startsWith("/uploads/");
+  const images = productGallery(product);
+  const cover = images[0] ?? product.image;
+  const hover = images[1];
 
   return (
     <article className="group">
@@ -29,15 +36,29 @@ export function ProductCard({ product }: { product: Product }) {
             strokeWidth={1.5}
           />
         </button>
-        <Link href={`/product/${product.slug}`} className="block h-full w-full">
+        <Link href={`/product/${product.slug}`} className="relative block h-full w-full">
           <Image
-            src={product.image}
+            src={cover}
             alt={`${product.brand} ${product.name}`}
             fill
-            unoptimized={localImage}
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            unoptimized={isLocalUpload(cover)}
+            className={`object-cover transition duration-500 ${
+              hover
+                ? "group-hover:scale-105 group-hover:opacity-0"
+                : "group-hover:scale-105"
+            }`}
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
           />
+          {hover && (
+            <Image
+              src={hover}
+              alt=""
+              fill
+              unoptimized={isLocalUpload(hover)}
+              className="object-cover opacity-0 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+            />
+          )}
         </Link>
       </div>
       <Link href={`/product/${product.slug}`} className="block">

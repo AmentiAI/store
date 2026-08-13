@@ -25,6 +25,21 @@ type SeedProduct = {
   stock: number;
 };
 
+const extraShots: Record<Category, string[]> = {
+  clothing: [
+    "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80",
+    "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&q=80",
+  ],
+  shoes: [
+    "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=800&q=80",
+    "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&q=80",
+  ],
+  accessories: [
+    "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80",
+    "https://images.unsplash.com/photo-1590874104431-f6d3ac0ba7d1?w=800&q=80",
+  ],
+};
+
 const products: SeedProduct[] = [
   {
     slug: "gallery-dept-logo-hoodie-black",
@@ -236,10 +251,22 @@ async function main() {
   await seedAdmin();
 
   for (const product of products) {
+    const images = [product.image, ...extraShots[product.category]];
+    const data = { ...product, images };
     await prisma.product.upsert({
       where: { slug: product.slug },
-      update: product,
-      create: product,
+      update: data,
+      create: data,
+    });
+  }
+
+  const missingGallery = await prisma.product.findMany({
+    where: { images: { isEmpty: true } },
+  });
+  for (const product of missingGallery) {
+    await prisma.product.update({
+      where: { id: product.id },
+      data: { images: [product.image] },
     });
   }
 

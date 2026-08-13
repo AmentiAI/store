@@ -28,7 +28,7 @@ export default async function EditProductPage({ params }: { params: Params }) {
         Edit product
       </h1>
       <p className="mb-6 text-sm text-neutral-600">
-        Update the image, price, description, or listing details.
+        Update the gallery, price, description, or listing details.
       </p>
       <ProductForm product={product} />
     </div>

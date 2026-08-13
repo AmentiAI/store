@@ -57,6 +57,11 @@ export default async function AdminProductsPage() {
                   className="object-cover"
                   sizes="(max-width: 640px) 100vw, 33vw"
                 />
+                {(product.images.length || 1) > 1 && (
+                  <span className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase text-white">
+                    {product.images.length || 1} photos
+                  </span>
+                )}
               </div>
               <div className="space-y-3 p-4">
                 <div>

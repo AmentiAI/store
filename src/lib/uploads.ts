@@ -2,6 +2,7 @@ import "server-only";
 
 import { put } from "@vercel/blob";
 import { randomUUID } from "crypto";
+import { MAX_PRODUCT_IMAGES } from "@/lib/product-types";
 
 const ALLOWED_TYPES = new Set([
   "image/jpeg",
@@ -64,18 +65,44 @@ export async function saveProductImage(file: File): Promise<string> {
   return blob.url;
 }
 
-export async function resolveProductImage(
-  formData: FormData,
-  existingImage?: string,
-): Promise<string> {
-  const file = formData.get("imageFile");
-  if (file instanceof File && file.size > 0) {
-    return saveProductImage(file);
+export async function resolveProductImages(formData: FormData): Promise<string[]> {
+  const order = String(formData.get("galleryOrder") ?? "")
+    .split(",")
+    .map((token) => token.trim())
+    .filter(Boolean);
+  const urls = formData
+    .getAll("existingImages")
+    .map((value) => String(value).trim())
+    .filter(Boolean);
+  const files = formData
+    .getAll("imageFiles")
+    .filter((value): value is File => value instanceof File && value.size > 0);
+
+  const images: string[] = [];
+  let urlIndex = 0;
+  let fileIndex = 0;
+
+  const tokens = order.length > 0 ? order : [
+    ...urls.map(() => "u"),
+    ...files.map(() => "f"),
+  ];
+
+  for (const token of tokens) {
+    if (images.length >= MAX_PRODUCT_IMAGES) break;
+    if (token === "u") {
+      const url = urls[urlIndex++];
+      if (url) images.push(url);
+      continue;
+    }
+    if (token === "f") {
+      const file = files[fileIndex++];
+      if (file) images.push(await saveProductImage(file));
+    }
   }
 
-  const imageUrl = String(formData.get("image") ?? "").trim();
-  if (imageUrl) return imageUrl;
-  if (existingImage) return existingImage;
+  if (images.length === 0) {
+    throw new Error("Add at least one product image.");
+  }
 
-  throw new Error("Upload a product image or paste an image URL.");
+  return images;
 }
