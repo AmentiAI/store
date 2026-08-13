@@ -19,9 +19,9 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="group">
-      <div className="relative mb-3 aspect-[4/5] overflow-hidden border border-line bg-surface">
+      <div className="relative mb-3 aspect-[4/5] overflow-hidden border-2 border-accent bg-white">
         {product.isNew && (
-          <span className="absolute left-2.5 top-2.5 z-10 bg-accent px-2 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase text-background">
+          <span className="absolute left-1.5 top-1.5 z-10 bg-accent px-1.5 py-0.5 text-[9px] font-semibold tracking-[0.1em] uppercase text-white sm:left-2.5 sm:top-2.5 sm:px-2 sm:py-1 sm:text-[10px] sm:tracking-[0.12em]">
             New
           </span>
         )}
@@ -29,7 +29,7 @@ export function ProductCard({ product }: { product: Product }) {
           type="button"
           aria-label={liked ? "Remove from wishlist" : "Add to wishlist"}
           onClick={() => setLiked((v) => !v)}
-          className="absolute right-2.5 top-2.5 z-10 rounded-full bg-background/80 p-1.5 transition-colors hover:bg-accent hover:text-background"
+          className="absolute right-1.5 top-1.5 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/90 transition-colors hover:bg-accent hover:text-white sm:right-2.5 sm:top-2.5 sm:h-auto sm:w-auto sm:p-1.5"
         >
           <Heart
             className={`h-4 w-4 ${liked ? "fill-accent text-accent" : ""}`}
@@ -62,10 +62,10 @@ export function ProductCard({ product }: { product: Product }) {
         </Link>
       </div>
       <Link href={`/product/${product.slug}`} className="block">
-        <p className="text-[11px] font-bold tracking-[0.12em] uppercase">
+        <p className="truncate text-[11px] font-bold tracking-[0.12em] uppercase">
           {product.brand}
         </p>
-        <p className="mt-1 text-sm text-muted">{product.name}</p>
+        <p className="mt-1 line-clamp-2 text-sm text-muted">{product.name}</p>
         <p className="mt-1.5 text-sm font-semibold text-accent">
           {formatPrice(product.price)}
         </p>

@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const validCategories: Category[] = ["clothing", "shoes", "accessories"];
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 const titles: Record<Category, string> = {
   clothing: "Clothing",
@@ -48,7 +48,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
         >
           ← Shop All
         </Link>
-        <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight sm:text-5xl">
+        <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl tracking-tight sm:text-5xl">
           {titles[cat]}
         </h1>
         <p className="mt-2 text-sm text-muted">
@@ -56,7 +56,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-x-3 gap-y-7 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-8 lg:grid-cols-4">
         {items.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

@@ -15,7 +15,7 @@ export default async function AdminProductsPage() {
     <div>
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-[family-name:var(--font-display)] text-4xl tracking-tight">
+          <h1 className="font-[family-name:var(--font-display)] text-3xl tracking-tight sm:text-4xl">
             Products
           </h1>
           <p className="mt-1 text-sm text-neutral-600">
@@ -81,18 +81,18 @@ export default async function AdminProductsPage() {
                     Stock {product.stock} · {product.category}
                   </p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   <Link
                     href={`/admin/products/${product.id}`}
-                    className="flex-1 bg-black px-3 py-2.5 text-center text-[11px] font-semibold tracking-[0.12em] uppercase text-white"
+                    className="min-h-11 flex-1 bg-black px-3 py-2.5 text-center text-[11px] font-semibold tracking-[0.12em] uppercase text-white"
                   >
                     Edit
                   </Link>
-                  <form action={deleteProduct}>
+                  <form action={deleteProduct} className="shrink-0">
                     <input type="hidden" name="id" value={product.id} />
                     <button
                       type="submit"
-                      className="border border-neutral-300 px-3 py-2.5 text-[11px] font-semibold tracking-[0.12em] uppercase text-red-600 hover:border-red-600"
+                      className="min-h-11 border border-neutral-300 px-3 py-2.5 text-[11px] font-semibold tracking-[0.12em] uppercase text-red-600 hover:border-red-600"
                     >
                       Delete
                     </button>

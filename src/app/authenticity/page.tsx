@@ -2,7 +2,7 @@ export const metadata = { title: "Authenticity" };
 
 export default function AuthenticityPage() {
   return (
-    <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-10">
+    <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-16 lg:px-10">
       <h1 className="font-[family-name:var(--font-display)] text-4xl tracking-tight sm:text-5xl">
         Authenticity
       </h1>

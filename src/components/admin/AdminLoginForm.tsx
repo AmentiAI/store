@@ -9,7 +9,7 @@ export function AdminLoginForm() {
   const [state, action, pending] = useActionState(login, initial);
 
   return (
-    <form action={action} className="mt-8 space-y-4">
+    <form action={action} className="mt-8 space-y-4" autoComplete="on">
       <input type="hidden" name="redirectTo" value="/admin" />
       <div>
         <label className="mb-1 block text-[11px] font-semibold tracking-[0.14em] uppercase text-neutral-500">
@@ -19,7 +19,7 @@ export function AdminLoginForm() {
           name="email"
           type="email"
           required
-          defaultValue="noe@reup.store"
+          autoComplete="username"
           className="w-full border border-neutral-300 bg-white px-3 py-3 text-sm outline-none focus:border-black"
         />
       </div>
@@ -31,6 +31,7 @@ export function AdminLoginForm() {
           name="password"
           type="password"
           required
+          autoComplete="current-password"
           className="w-full border border-neutral-300 bg-white px-3 py-3 text-sm outline-none focus:border-black"
         />
       </div>
@@ -40,7 +41,7 @@ export function AdminLoginForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full bg-black py-3.5 text-[11px] font-semibold tracking-[0.16em] uppercase text-white disabled:opacity-60"
+          className="min-h-12 w-full bg-black py-3.5 text-[11px] font-semibold tracking-[0.16em] uppercase text-white disabled:opacity-60"
       >
         {pending ? "Signing in..." : "Sign in"}
       </button>

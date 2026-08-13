@@ -4,7 +4,7 @@ import path from "node:path";
 
 const ROOT = process.cwd();
 const SOURCE = path.join(ROOT, "public", "thrift-sharks-logo.png");
-const BG = { r: 5, g: 7, b: 12, alpha: 1 };
+const BG = { r: 0, g: 0, b: 0, alpha: 1 };
 
 async function squareLogo(size, paddingRatio = 0.08) {
   const pad = Math.round(size * paddingRatio);
@@ -96,6 +96,7 @@ const png32 = await writePng(path.join(publicDir, "favicon-32x32.png"), 32, 0.06
 const png48 = await writePng(path.join(publicDir, "favicon-48x48.png"), 48, 0.06);
 await writePng(path.join(publicDir, "apple-touch-icon.png"), 180, 0.08);
 await writePng(path.join(publicDir, "apple-touch-icon-precomposed.png"), 180, 0.08);
+await writePng(path.join(publicDir, "apple-touch-icon-180x180.png"), 180, 0.08);
 await writePng(path.join(publicDir, "android-chrome-192x192.png"), 192, 0.08);
 await writePng(path.join(publicDir, "android-chrome-512x512.png"), 512, 0.08);
 await writePng(path.join(publicDir, "mstile-150x150.png"), 150, 0.08);

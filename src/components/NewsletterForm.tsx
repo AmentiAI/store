@@ -8,7 +8,7 @@ export function NewsletterForm() {
 
   return (
     <form
-      className="flex border border-line bg-background"
+      className="flex min-w-0 border-2 border-accent bg-white"
       onSubmit={(e) => {
         e.preventDefault();
         if (!email.trim()) return;
@@ -28,11 +28,11 @@ export function NewsletterForm() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email address"
             required
-            className="min-w-0 flex-1 bg-transparent px-3 py-2.5 text-sm outline-none placeholder:text-muted"
+            className="min-w-0 flex-1 bg-transparent px-3 py-3 text-base outline-none placeholder:text-muted sm:py-2.5 sm:text-sm"
           />
           <button
             type="submit"
-            className="bg-accent px-4 text-[11px] font-semibold tracking-[0.12em] uppercase text-background hover:bg-accent-bright"
+            className="shrink-0 bg-accent px-4 text-[11px] font-semibold tracking-[0.12em] uppercase text-white hover:bg-accent-bright"
           >
             Join
           </button>

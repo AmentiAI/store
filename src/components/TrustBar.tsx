@@ -25,8 +25,8 @@ const features = [
 
 export function TrustBar() {
   return (
-    <section className="border-y border-line bg-surface">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-y-8 px-4 py-8 sm:px-6 lg:grid-cols-4 lg:px-10 lg:py-9">
+    <section className="border-y-2 border-accent bg-white">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-y-5 px-4 py-7 sm:grid-cols-2 sm:gap-y-8 sm:px-6 lg:grid-cols-4 lg:px-10 lg:py-9">
         {features.map((feature) => (
           <div
             key={feature.title}
@@ -36,11 +36,13 @@ export function TrustBar() {
               className="mt-0.5 h-5 w-5 shrink-0 text-accent sm:mt-0"
               strokeWidth={1.5}
             />
-            <div>
-              <p className="text-[11px] font-semibold tracking-[0.14em] uppercase">
+            <div className="min-w-0">
+              <p className="text-[10px] font-semibold tracking-[0.1em] uppercase sm:text-[11px] sm:tracking-[0.14em]">
                 {feature.title}
               </p>
-              <p className="mt-1 text-xs text-muted">{feature.description}</p>
+              <p className="mt-1 text-[11px] leading-snug text-muted sm:text-xs">
+                {feature.description}
+              </p>
             </div>
           </div>
         ))}

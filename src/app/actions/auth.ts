@@ -10,6 +10,16 @@ export type AuthState = {
   success?: string;
 };
 
+function safeCustomerPath(value: string, fallback = "/account") {
+  if (!value.startsWith("/") || value.startsWith("//") || value.includes("\\")) {
+    return fallback;
+  }
+  if (value.startsWith("/admin")) {
+    return fallback;
+  }
+  return value;
+}
+
 export async function login(
   _prev: AuthState,
   formData: FormData,
@@ -41,11 +51,15 @@ export async function login(
     role: user.role,
   });
 
-  if (user.role === "ADMIN" && redirectTo.startsWith("/admin")) {
+  if (
+    user.role === "ADMIN" &&
+    redirectTo.startsWith("/admin") &&
+    !redirectTo.startsWith("//")
+  ) {
     redirect("/admin");
   }
 
-  redirect(redirectTo.startsWith("/") ? redirectTo : "/account");
+  redirect(safeCustomerPath(redirectTo));
 }
 
 export async function signup(
@@ -57,6 +71,7 @@ export async function signup(
     .trim()
     .toLowerCase();
   const password = String(formData.get("password") ?? "");
+  const redirectTo = String(formData.get("redirectTo") ?? "/account");
 
   if (name.length < 2) {
     return { error: "Name must be at least 2 characters." };
@@ -90,7 +105,7 @@ export async function signup(
     role: user.role,
   });
 
-  redirect("/account");
+  redirect(safeCustomerPath(redirectTo));
 }
 
 export async function logout() {

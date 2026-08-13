@@ -20,11 +20,11 @@ const body = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "Thrift Sharks | Buy • Sell • Resell",
+    default: "Thrift Sharks | Authentic Streetwear",
     template: "%s | Thrift Sharks",
   },
   description:
-    "Buy, sell, and resell authentic streetwear. Clothing, shoes, accessories, and more.",
+    "Shop authentic streetwear. Clothing, shoes, accessories, and more.",
   applicationName: "Thrift Sharks",
   icons: {
     icon: [
@@ -41,19 +41,22 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     title: "Thrift Sharks",
   },
   other: {
     "apple-mobile-web-app-capable": "yes",
-    "msapplication-TileColor": "#05070c",
+    "msapplication-TileColor": "#1e90ff",
     "msapplication-TileImage": "/mstile-150x150.png",
     "msapplication-config": "/browserconfig.xml",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05070c",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({

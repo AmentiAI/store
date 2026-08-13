@@ -5,11 +5,11 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Thrift Sharks",
     short_name: "Thrift Sharks",
     description:
-      "Buy, sell, and resell authentic streetwear. Clothing, shoes, accessories, and more.",
+      "Shop authentic streetwear. Clothing, shoes, accessories, and more.",
     start_url: "/",
     display: "standalone",
-    background_color: "#05070c",
-    theme_color: "#05070c",
+    background_color: "#ffffff",
+    theme_color: "#1e90ff",
     icons: [
       {
         src: "/favicon.ico",

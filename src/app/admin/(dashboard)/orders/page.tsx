@@ -24,7 +24,7 @@ export default async function AdminOrdersPage() {
 
       {orders.length === 0 ? (
         <div className="border border-neutral-200 bg-white px-5 py-10 text-sm text-neutral-600">
-          No orders yet. `Order` and `OrderItem` tables are ready for checkout.
+          No orders yet. Paid PayPal checkouts will show up here.
         </div>
       ) : (
         <div className="space-y-4">
@@ -49,12 +49,12 @@ export default async function AdminOrdersPage() {
                 </div>
                 <p className="font-semibold">{formatPrice(order.total)}</p>
               </div>
-              <form action={updateOrderStatus} className="mt-4 flex gap-2">
+              <form action={updateOrderStatus} className="mt-4 flex min-w-0 flex-wrap gap-2">
                 <input type="hidden" name="id" value={order.id} />
                 <select
                   name="status"
                   defaultValue={order.status}
-                  className="border border-neutral-300 px-3 py-2 text-sm"
+                  className="min-h-11 min-w-0 flex-1 border border-neutral-300 px-3 py-2 pr-10 text-sm"
                 >
                   {statuses.map((status) => (
                     <option key={status} value={status}>
@@ -64,7 +64,7 @@ export default async function AdminOrdersPage() {
                 </select>
                 <button
                   type="submit"
-                  className="bg-black px-3 py-2 text-[11px] font-semibold tracking-[0.12em] uppercase text-white"
+                  className="shrink-0 bg-black px-4 py-2.5 text-[11px] font-semibold tracking-[0.12em] uppercase text-white"
                 >
                   Update
                 </button>

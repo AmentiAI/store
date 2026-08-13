@@ -8,6 +8,7 @@ const links = [
   { href: "/admin/products/new", label: "Add product" },
   { href: "/admin/orders", label: "Orders" },
   { href: "/admin/customers", label: "Customers" },
+  { href: "/admin/settings", label: "Settings" },
 ];
 
 export async function AdminNav() {
@@ -15,41 +16,43 @@ export async function AdminNav() {
 
   return (
     <header className="border-b border-neutral-800 bg-neutral-950 text-white">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
-        <div>
-          <Link
-            href="/admin"
-            className="font-[family-name:var(--font-display)] text-2xl tracking-wide"
-          >
-            Thrift Sharks Admin
-          </Link>
-          {session && (
-            <p className="mt-0.5 text-xs text-neutral-400">
-              Signed in as {session.name}
-            </p>
-          )}
-        </div>
-        <nav className="flex flex-wrap items-center gap-4 text-[11px] font-semibold tracking-[0.14em] uppercase">
-          {links.map((link) => (
+      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 sm:px-6">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
             <Link
-              key={link.href}
-              href={link.href}
-              className="text-neutral-300 transition-colors hover:text-white"
+              href="/admin"
+              className="font-[family-name:var(--font-display)] text-xl tracking-wide sm:text-2xl"
             >
-              {link.label}
+              Thrift Sharks Admin
             </Link>
-          ))}
-          <Link href="/" className="text-neutral-500 hover:text-white">
-            Store
-          </Link>
-          <form action={logoutAdmin}>
+            {session && (
+              <p className="mt-0.5 truncate text-xs text-neutral-400">
+                Signed in as {session.name}
+              </p>
+            )}
+          </div>
+          <form action={logoutAdmin} className="shrink-0">
             <button
               type="submit"
-              className="text-neutral-500 transition-colors hover:text-white"
+              className="min-h-10 px-2 text-[11px] font-semibold tracking-[0.14em] uppercase text-neutral-500 transition-colors hover:text-white"
             >
               Log out
             </button>
           </form>
+        </div>
+        <nav className="-mx-4 flex items-center gap-4 overflow-x-auto px-4 pb-1 text-[11px] font-semibold tracking-[0.14em] uppercase [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="shrink-0 py-2 text-neutral-300 transition-colors hover:text-white"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/" className="shrink-0 py-2 text-neutral-500 hover:text-white">
+            Store
+          </Link>
         </nav>
       </div>
     </header>

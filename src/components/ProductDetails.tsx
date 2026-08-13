@@ -27,11 +27,11 @@ export function ProductDetails({ product }: { product: Product }) {
   }
 
   return (
-    <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-10 lg:py-16">
+    <div className="mx-auto grid max-w-[1400px] gap-8 px-4 py-8 sm:px-6 sm:py-10 lg:grid-cols-2 lg:gap-16 lg:px-10 lg:py-16">
       <div className="space-y-3">
-        <div className="relative aspect-[4/5] overflow-hidden border border-line bg-surface">
+        <div className="relative aspect-[4/5] overflow-hidden border-2 border-accent bg-white">
           {product.isNew && (
-            <span className="absolute left-3 top-3 z-10 bg-accent px-2 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase text-background">
+            <span className="absolute left-3 top-3 z-10 bg-accent px-2 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase text-white">
               New
             </span>
           )}
@@ -50,7 +50,7 @@ export function ProductDetails({ product }: { product: Product }) {
                 type="button"
                 aria-label="Previous image"
                 onClick={showPrevious}
-                className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-background/85 p-2 text-foreground transition-colors hover:bg-accent hover:text-background"
+                className="absolute bottom-3 left-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-foreground transition-colors hover:bg-accent hover:text-white sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2"
               >
                 <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
               </button>
@@ -58,7 +58,7 @@ export function ProductDetails({ product }: { product: Product }) {
                 type="button"
                 aria-label="Next image"
                 onClick={showNext}
-                className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-background/85 p-2 text-foreground transition-colors hover:bg-accent hover:text-background"
+                className="absolute bottom-3 right-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-foreground transition-colors hover:bg-accent hover:text-white sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2"
               >
                 <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
               </button>
@@ -75,10 +75,10 @@ export function ProductDetails({ product }: { product: Product }) {
                 aria-label={`View image ${index + 1}`}
                 aria-current={index === active}
                 onClick={() => setActive(index)}
-                className={`relative h-20 w-16 shrink-0 overflow-hidden bg-surface ${
+                className={`relative h-20 w-16 shrink-0 overflow-hidden border-2 bg-white ${
                   index === active
-                    ? "ring-2 ring-accent"
-                    : "opacity-70 hover:opacity-100"
+                    ? "border-accent"
+                    : "border-accent/40 hover:border-accent"
                 }`}
               >
                 <Image
@@ -99,7 +99,7 @@ export function ProductDetails({ product }: { product: Product }) {
         <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-accent">
           {product.category}
         </p>
-        <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl tracking-tight sm:text-5xl">
+        <h1 className="mt-2 font-[family-name:var(--font-display)] text-3xl tracking-tight sm:text-5xl">
           {product.brand}
         </h1>
         <p className="mt-1 text-lg text-muted">{product.name}</p>
@@ -121,10 +121,10 @@ export function ProductDetails({ product }: { product: Product }) {
                   key={option}
                   type="button"
                   onClick={() => setSize(option)}
-                  className={`min-w-12 border px-3 py-2.5 text-sm transition-colors ${
+                  className={`min-h-11 min-w-12 border-2 px-3 py-2.5 text-sm transition-colors ${
                     size === option
-                      ? "border-accent bg-accent text-background"
-                      : "border-line hover:border-accent"
+                      ? "border-accent bg-accent text-white"
+                      : "border-accent hover:bg-accent hover:text-white"
                   }`}
                 >
                   {option}
@@ -137,7 +137,7 @@ export function ProductDetails({ product }: { product: Product }) {
         <button
           type="button"
           onClick={() => addItem(product, size || undefined)}
-          className="mt-8 w-full max-w-md bg-accent py-4 text-[11px] font-semibold tracking-[0.16em] uppercase text-background transition-transform hover:scale-[1.01] hover:bg-accent-bright active:scale-[0.99]"
+          className="mt-8 min-h-12 w-full max-w-md bg-accent py-4 text-[11px] font-semibold tracking-[0.16em] uppercase text-white transition-transform hover:scale-[1.01] hover:bg-accent-bright active:scale-[0.99]"
         >
           Add to Cart
         </button>

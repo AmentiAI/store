@@ -5,6 +5,10 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/session";
 import { resolveProductImages } from "@/lib/uploads";
+import {
+  ANNOUNCEMENT_KEY,
+  clampAnnouncement,
+} from "@/lib/site-settings";
 import type { Category, OrderStatus } from "@/generated/prisma/client";
 
 export type AdminState = {
@@ -27,14 +31,22 @@ function parseSizes(value: string) {
     .filter(Boolean);
 }
 
-function revalidateCatalog(productId?: string) {
-  revalidatePath("/");
-  revalidatePath("/shop");
+function revalidateCatalog(opts?: {
+  productId?: string;
+  slug?: string;
+}) {
+  revalidatePath("/", "layout");
+  revalidatePath("/shop", "layout");
+  revalidatePath("/shop/clothing");
+  revalidatePath("/shop/shoes");
+  revalidatePath("/shop/accessories");
   revalidatePath("/shop/brands");
-  revalidatePath("/admin");
-  revalidatePath("/admin/products");
-  if (productId) {
-    revalidatePath(`/admin/products/${productId}`);
+  revalidatePath("/admin", "layout");
+  if (opts?.slug) {
+    revalidatePath(`/product/${opts.slug}`);
+  }
+  if (opts?.productId) {
+    revalidatePath(`/admin/products/${opts.productId}`);
   }
 }
 
@@ -98,7 +110,7 @@ export async function createProduct(
     return { error: "Could not create product. Slug may already exist." };
   }
 
-  revalidateCatalog();
+  revalidateCatalog({ slug });
   redirect("/admin/products");
 }
 
@@ -167,7 +179,7 @@ export async function updateProduct(
     return { error: "Could not update product." };
   }
 
-  revalidateCatalog(id);
+  revalidateCatalog({ productId: id, slug });
   return { success: "Product saved." };
 }
 
@@ -178,8 +190,16 @@ export async function deleteProduct(formData: FormData) {
   const id = String(formData.get("id") ?? "");
   if (!id) return;
 
+  const existing = await prisma.product.findUnique({
+    where: { id },
+    select: { slug: true },
+  });
+  if (!existing) {
+    redirect("/admin/products");
+  }
+
   await prisma.product.delete({ where: { id } });
-  revalidateCatalog();
+  revalidateCatalog({ productId: id, slug: existing.slug });
   redirect("/admin/products");
 }
 
@@ -205,4 +225,29 @@ export async function updateOrderStatus(formData: FormData) {
 
   revalidatePath("/admin/orders");
   revalidatePath(`/admin/orders/${id}`);
+}
+
+export async function updateAnnouncement(
+  _prev: AdminState,
+  formData: FormData,
+): Promise<AdminState> {
+  const admin = await requireAdmin();
+  if (!admin) return { error: "Unauthorized." };
+
+  const announcement = clampAnnouncement(
+    String(formData.get("announcement") ?? ""),
+  );
+  if (!announcement) {
+    return { error: "Enter announcement text, or keep the current copy." };
+  }
+
+  await prisma.siteSetting.upsert({
+    where: { key: ANNOUNCEMENT_KEY },
+    update: { value: announcement },
+    create: { key: ANNOUNCEMENT_KEY, value: announcement },
+  });
+
+  revalidatePath("/", "layout");
+  revalidatePath("/admin/settings");
+  return { success: "Announcement saved." };
 }

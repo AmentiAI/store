@@ -9,7 +9,7 @@ export default function NotFound() {
       <p className="mt-3 text-muted">This piece isn&apos;t in the vault.</p>
       <Link
         href="/shop"
-        className="mt-8 bg-accent px-6 py-3 text-[11px] font-semibold tracking-[0.16em] uppercase text-background hover:bg-accent-bright"
+        className="mt-8 bg-accent px-6 py-3 text-[11px] font-semibold tracking-[0.16em] uppercase text-white hover:bg-accent-bright"
       >
         Back to Shop
       </Link>

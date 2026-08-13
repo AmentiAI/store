@@ -9,17 +9,17 @@ const sizes: Record<
   header: {
     width: 220,
     height: 220,
-    className: "h-14 w-auto sm:h-[4.25rem]",
+    className: "h-9 w-auto max-w-[min(9.5rem,42vw)] sm:h-14 sm:max-w-none lg:h-[4.25rem]",
   },
   footer: {
     width: 280,
     height: 280,
-    className: "h-24 w-auto",
+    className: "h-20 w-auto max-w-[12rem] sm:h-24 sm:max-w-none",
   },
   hero: {
     width: 900,
     height: 900,
-    className: "h-auto w-full max-w-[540px]",
+    className: "h-auto w-full max-w-[220px] sm:max-w-[400px] lg:max-w-[540px]",
   },
   mark: {
     width: 64,
@@ -41,7 +41,7 @@ export function BrandLogo({
 
   return (
     <Image
-      src="/thrift-sharks-logo.png"
+      src="/thrift-sharks-logo-v2.png"
       alt="Thrift Sharks"
       width={dims.width}
       height={dims.height}

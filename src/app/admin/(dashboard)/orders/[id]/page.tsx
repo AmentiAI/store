@@ -59,12 +59,12 @@ export default async function AdminOrderDetailPage({
           <h2 className="font-[family-name:var(--font-display)] text-2xl">
             Status
           </h2>
-          <form action={updateOrderStatus} className="mt-4 flex gap-2">
+          <form action={updateOrderStatus} className="mt-4 flex min-w-0 flex-wrap gap-2">
             <input type="hidden" name="id" value={order.id} />
             <select
               name="status"
               defaultValue={order.status}
-              className="border border-neutral-300 px-3 py-2"
+              className="min-h-11 min-w-0 flex-1 border border-neutral-300 px-3 py-2 pr-10"
             >
               {statuses.map((status) => (
                 <option key={status} value={status}>
@@ -74,7 +74,7 @@ export default async function AdminOrderDetailPage({
             </select>
             <button
               type="submit"
-              className="bg-black px-3 py-2 text-[11px] font-semibold tracking-[0.12em] uppercase text-white"
+              className="shrink-0 bg-black px-4 py-2.5 text-[11px] font-semibold tracking-[0.12em] uppercase text-white"
             >
               Update
             </button>
@@ -93,6 +93,22 @@ export default async function AdminOrderDetailPage({
               <dd>{formatPrice(order.total)}</dd>
             </div>
           </dl>
+          {(order.paypalOrderId || order.paypalCaptureId) && (
+            <dl className="mt-6 space-y-1 border-t border-neutral-200 pt-4 text-xs text-neutral-500">
+              {order.paypalOrderId && (
+                <div>
+                  <dt className="uppercase tracking-[0.12em]">PayPal order</dt>
+                  <dd className="mt-0.5 break-all font-mono">{order.paypalOrderId}</dd>
+                </div>
+              )}
+              {order.paypalCaptureId && (
+                <div className="mt-2">
+                  <dt className="uppercase tracking-[0.12em]">PayPal capture</dt>
+                  <dd className="mt-0.5 break-all font-mono">{order.paypalCaptureId}</dd>
+                </div>
+              )}
+            </dl>
+          )}
         </div>
       </div>
 

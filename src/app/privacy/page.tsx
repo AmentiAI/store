@@ -18,7 +18,7 @@ export default function PrivacyPage() {
         Services, you acknowledge this Policy. If you do not agree, do not use
         the Services.
       </p>
-      <p className="rounded-sm border border-line bg-surface p-4 text-muted">
+      <p className="rounded-sm border-2 border-accent bg-white p-4 text-muted">
         This Policy is a protective template and is not legal advice. Have a
         privacy attorney review it for your locations of operation, payment
         stack, and marketing tools (including CCPA/CPRA, GDPR, and other laws

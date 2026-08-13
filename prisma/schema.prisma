@@ -109,6 +109,8 @@ model Order {
   shippingZip     String?
   shippingCountry String      @default("US")
   notes           String?
+  paypalOrderId   String?
+  paypalCaptureId String?
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
   items           OrderItem[]
@@ -116,6 +118,7 @@ model Order {
   @@index([status])
   @@index([email])
   @@index([createdAt])
+  @@index([paypalOrderId])
 }
 
 model OrderItem {
@@ -131,4 +134,10 @@ model OrderItem {
   size      String?
   quantity  Int
   image     String
+}
+
+model SiteSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
 }

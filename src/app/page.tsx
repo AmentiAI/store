@@ -3,7 +3,7 @@ import { NewArrivals } from "@/components/NewArrivals";
 import { ShopByCategory } from "@/components/ShopByCategory";
 import { TrustBar } from "@/components/TrustBar";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default function Home() {
   return (

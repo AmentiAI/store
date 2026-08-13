@@ -182,7 +182,7 @@ export function ProductForm({ product }: { product?: Product }) {
         </p>
 
         <div
-          className={`relative mt-4 aspect-[4/5] overflow-hidden bg-neutral-100 ${
+          className={`relative mt-4 mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden bg-neutral-100 lg:max-w-none ${
             dragOver ? "ring-2 ring-black" : ""
           }`}
           onDragOver={(e) => {
@@ -333,7 +333,7 @@ export function ProductForm({ product }: { product?: Product }) {
           <label className="mb-1 block text-[11px] font-semibold tracking-[0.14em] uppercase text-neutral-500">
             Or paste image URL
           </label>
-          <div className="flex gap-2">
+          <div className="flex min-w-0 gap-2">
             <input
               type="url"
               placeholder="https://..."
@@ -346,7 +346,7 @@ export function ProductForm({ product }: { product?: Product }) {
                 }
               }}
               disabled={remaining <= 0}
-              className="w-full border border-neutral-300 px-3 py-3 text-sm outline-none focus:border-black disabled:opacity-50"
+              className="min-w-0 flex-1 border border-neutral-300 px-3 py-3 text-sm outline-none focus:border-black disabled:opacity-50"
             />
             <button
               type="button"
@@ -399,7 +399,7 @@ export function ProductForm({ product }: { product?: Product }) {
             <select
               name="category"
               defaultValue={product?.category ?? "clothing"}
-              className="w-full border border-neutral-300 px-3 py-3 text-sm outline-none focus:border-black"
+              className="min-h-11 w-full min-w-0 border border-neutral-300 px-3 py-3 pr-10 text-sm outline-none focus:border-black"
             >
               {categories.map((category) => (
                 <option key={category} value={category}>
@@ -465,7 +465,7 @@ export function ProductForm({ product }: { product?: Product }) {
         <button
           type="submit"
           disabled={pending}
-          className="bg-black px-5 py-3.5 text-[11px] font-semibold tracking-[0.14em] uppercase text-white disabled:opacity-60"
+          className="min-h-12 w-full bg-black px-5 py-3.5 text-[11px] font-semibold tracking-[0.14em] uppercase text-white disabled:opacity-60 sm:w-auto"
         >
           {pending
             ? "Saving..."

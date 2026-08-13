@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #05070c;
-  --foreground: #f3f6fb;
-  --muted: #93a0b5;
-  --surface: #0c121c;
-  --accent: #2bb0ff;
-  --accent-bright: #7ad4ff;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --muted: #5c6570;
+  --surface: #ffffff;
+  --accent: #1e90ff;
+  --accent-bright: #4aa8ff;
   --gold: #e8c547;
-  --line: rgba(43, 176, 255, 0.2);
+  --line: #1e90ff;
 }
 
 @theme inline {
@@ -24,15 +24,44 @@
   --font-display: var(--font-display);
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231e90ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+@media (max-width: 640px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
 }
 
 ::selection {
   background: var(--accent);
-  color: #05070c;
+  color: #ffffff;
 }
 
 @keyframes fade-up {
@@ -64,16 +93,6 @@ body {
   }
 }
 
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.45;
-  }
-  50% {
-    opacity: 0.85;
-  }
-}
-
 .animate-fade-up {
   animation: fade-up 0.7s ease-out both;
 }
@@ -87,12 +106,11 @@ body {
 }
 
 .glow-blue {
-  filter: drop-shadow(0 0 28px rgba(43, 176, 255, 0.45));
+  filter: drop-shadow(0 0 18px rgba(30, 144, 255, 0.35));
 }
 
 .hero-glow {
   background:
-    radial-gradient(ellipse at 70% 45%, rgba(43, 176, 255, 0.28), transparent 55%),
-    radial-gradient(ellipse at 20% 80%, rgba(30, 80, 160, 0.18), transparent 50%);
-  animation: pulse-glow 6s ease-in-out infinite;
+    radial-gradient(ellipse at 75% 40%, rgba(30, 144, 255, 0.14), transparent 55%),
+    radial-gradient(ellipse at 15% 85%, rgba(30, 144, 255, 0.08), transparent 50%);
 }

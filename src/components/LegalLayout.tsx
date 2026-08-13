@@ -11,11 +11,11 @@ export function LegalLayout({
   children: ReactNode;
 }) {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-10">
+    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-16 lg:px-10">
       <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-accent">
         Legal
       </p>
-      <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl tracking-tight sm:text-5xl">
+      <h1 className="mt-2 font-[family-name:var(--font-display)] text-3xl tracking-tight sm:text-5xl">
         {title}
       </h1>
       <p className="mt-3 text-sm text-muted">Last updated: {updated}</p>

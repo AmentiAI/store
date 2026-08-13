@@ -19,7 +19,7 @@ export default function TermsPage() {
         Services, you agree to these Terms. If you do not agree, do not use the
         Services.
       </p>
-      <p className="rounded-sm border border-line bg-surface p-4 text-muted">
+      <p className="rounded-sm border-2 border-accent bg-white p-4 text-muted">
         These Terms are a protective template for an online resale business and
         are not a substitute for advice from a licensed attorney. Have counsel
         review them for your jurisdiction and business model before relying on

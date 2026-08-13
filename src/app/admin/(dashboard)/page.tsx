@@ -36,7 +36,7 @@ export default async function AdminDashboardPage() {
           <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-neutral-500">
             Dashboard
           </p>
-          <h1 className="mt-1 font-[family-name:var(--font-display)] text-4xl tracking-tight">
+          <h1 className="mt-1 font-[family-name:var(--font-display)] text-3xl tracking-tight sm:text-4xl">
             Welcome, Mr. Noe
           </h1>
         </div>

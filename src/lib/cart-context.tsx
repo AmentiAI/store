@@ -3,6 +3,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -18,16 +19,19 @@ export type CartItem = {
 type CartContextValue = {
   items: CartItem[];
   isOpen: boolean;
+  ready: boolean;
   openCart: () => void;
   closeCart: () => void;
   toggleCart: () => void;
   addItem: (product: Product, size?: string) => void;
   removeItem: (productId: string, size?: string) => void;
   updateQuantity: (productId: string, quantity: number, size?: string) => void;
+  clearCart: () => void;
   itemCount: number;
   subtotal: number;
 };
 
+const STORAGE_KEY = "thriftsharks_cart";
 const CartContext = createContext<CartContextValue | null>(null);
 
 function itemKey(productId: string, size?: string) {
@@ -37,6 +41,25 @@ function itemKey(productId: string, size?: string) {
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as CartItem[];
+        if (Array.isArray(parsed)) setItems(parsed);
+      }
+    } catch {
+      /* ignore bad storage */
+    }
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!ready) return;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  }, [items, ready]);
 
   const value = useMemo<CartContextValue>(() => {
     const addItem = (product: Product, size?: string) => {
@@ -86,19 +109,21 @@ export function CartProvider({ children }: { children: ReactNode }) {
     return {
       items,
       isOpen,
+      ready,
       openCart: () => setIsOpen(true),
       closeCart: () => setIsOpen(false),
       toggleCart: () => setIsOpen((open) => !open),
       addItem,
       removeItem,
       updateQuantity,
+      clearCart: () => setItems([]),
       itemCount: items.reduce((sum, item) => sum + item.quantity, 0),
       subtotal: items.reduce(
         (sum, item) => sum + item.product.price * item.quantity,
         0,
       ),
     };
-  }, [items, isOpen]);
+  }, [items, isOpen, ready]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

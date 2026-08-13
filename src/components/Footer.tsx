@@ -4,15 +4,15 @@ import { NewsletterForm } from "./NewsletterForm";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-surface">
-      <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-14 sm:px-6 md:grid-cols-4 lg:px-10">
+    <footer className="border-t-2 border-accent bg-white">
+      <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-10 sm:px-6 sm:py-14 md:grid-cols-2 lg:grid-cols-4 lg:px-10">
         <div className="md:col-span-1">
           <Link href="/" className="inline-block" aria-label="Thrift Sharks home">
             <BrandLogo size="footer" />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
-            Buy. Sell. Resell. Authenticated streetwear, sneakers, and
-            accessories — ready for the next chapter.
+            Authenticated streetwear, sneakers, and accessories — curated and
+            ready to ship.
           </p>
         </div>
 
@@ -112,7 +112,7 @@ export function Footer() {
           </a>
         </div>
       </div>
-      <div className="border-t border-line">
+      <div className="border-t-2 border-accent">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-3 px-4 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-10">
           <p>© {new Date().getFullYear()} Thrift Sharks. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
